@@ -1,5 +1,6 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
-import SampleWorkflow from "./workflows/sample_workflow.ts";
+import { Datastore } from "./datastores/datastore.ts";
+import HonyakuWorkflow from "./workflows/honyaku_workflow.ts";
 
 /**
  * The app manifest contains the app's configuration. This
@@ -8,9 +9,16 @@ import SampleWorkflow from "./workflows/sample_workflow.ts";
  */
 export default Manifest({
   name: "honyaku",
-  description: "A template for building Slack apps with Deno",
+  description: "Honyaku Bot",
   icon: "assets/icon.png",
-  workflows: [SampleWorkflow],
+  workflows: [HonyakuWorkflow],
   outgoingDomains: [],
-  botScopes: ["commands", "chat:write", "chat:write.public"],
+  datastores: [Datastore],
+  botScopes: [
+    "app_mentions:read",
+    "chat:write",
+    "chat:write.public",
+    "datastore:read",
+    "datastore:write",
+  ],
 });
