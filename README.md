@@ -11,8 +11,20 @@ This is a bot to translate texts with DeepL for
 
 It's required to register API_KEY of DeepL beforehand.
 
+* Set a key for each channel.
+* [DeepL api_key page](https://www.deepl.com/ja/pro-api?cta=menu-pro-api/)
+
+```text
+...
+	-H 'Authorization: DeepL-Auth-Key abcdedab-abcd-1234-aaaa-abcdef123456:xx' \
+...
 ```
-@honyaku set_api_key XXXXXX-XXXXXX-XXXXXXXXXX-XXXXXX
+
+key is `abcdedab-abcd-1234-aaaa-abcdef123456:xx`  
+(* The colon and the two letters behind it are also keys.)
+
+```
+@honyaku set_api_key XXXXXX-XXXXXX-XXXXXXXXXX-XXXXXX:XX
 ```
 
 ## Translation command

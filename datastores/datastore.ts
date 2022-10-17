@@ -1,8 +1,4 @@
-import {
-  DefineDatastore,
-  Schema,
-} from "https://deno.land/x/deno_slack_sdk@1.1.2/mod.ts";
-
+import { DefineDatastore, Schema } from "deno-slack-sdk/mod.ts";
 export const DATASTORE_NAME = "honyaku";
 
 export const Datastore = DefineDatastore({

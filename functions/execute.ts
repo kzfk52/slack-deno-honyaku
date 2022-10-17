@@ -1,8 +1,4 @@
-import {
-  DefineFunction,
-  Schema,
-  SlackFunction,
-} from "https://deno.land/x/deno_slack_sdk@1.1.2/mod.ts";
+import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
 import { SlackAPI } from "deno-slack-api/mod.ts";
 import { Datastore, DATASTORE_NAME } from "../datastores/datastore.ts";
 
@@ -56,6 +52,20 @@ export default SlackFunction(ExecuteFunction, async ({ inputs, token }) => {
     if (!response.ok) {
       result = "Failed to set API key";
     }
+  } else if (command === "clear_api_key") {
+    const response = await client.apps.datastore.delete({
+      datastore: DATASTORE_NAME,
+      item: {
+        id: inputs.channelId,
+      },
+    });
+    result = "Success";
+    if (!response.ok) {
+      result = "Failed to delete API key";
+    }
+  } else if (command === "help") {
+    result =
+      "source_lang:\nBG - Bulgarian\nCS - Czech\nDA - Danish\nDE - German\nEL - Greek\nEN - English\nES - Spanish\nET - Estonian\nFI - Finnish\nFR - French\nHU - Hungarian\nID - Indonesian\nIT - Italian\nJA - Japanese\nLT - Lithuanian\nLV - Latvian\nNL - Dutch\nPL - Polish\nPT - Portuguese (all Portuguese varieties mixed)\nRO - Romanian\nRU - Russian\nSK - Slovak\nSL - Slovenian\nSV - Swedish\nTR - Turkish\nUK - Ukrainian\nZH - Chinese\n\ntarget_lang:\nBG - Bulgarian\nCS - Czech\nDA - Danish\nDE - German\nEL - Greek\nEN - English (unspecified variant for backward compatibility; please select EN-GB or EN-US instead)\nEN-GB - English (British)\nEN-US - English (American)\nES - Spanish\nET - Estonian\nFI - Finnish\nFR - French\nHU - Hungarian\nID - Indonesian\nIT - Italian\nJA - Japanese\nLT - Lithuanian\nLV - Latvian\nNL - Dutch\nPL - Polish\nPT - Portuguese (unspecified variant for backward compatibility; please select PT-BR or PT-PT instead)\nPT-BR - Portuguese (Brazilian)\nPT-PT - Portuguese (all Portuguese varieties excluding Brazilian Portuguese)\nRO - Romanian\nRU - Russian\nSK - Slovak\nSL - Slovenian\nSV - Swedish\nTR - Turkish\nUK - Ukrainian\nZH - Chinese (simplified)\n";
   } else if (command.match(/[a-z]{2,4}_[a-z]{2,4}/)) {
     const queryResult = await client.apps.datastore.query<
       typeof Datastore.definition

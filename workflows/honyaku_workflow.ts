@@ -1,7 +1,4 @@
-import {
-  DefineWorkflow,
-  Schema,
-} from "https://deno.land/x/deno_slack_sdk@1.1.2/mod.ts";
+import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
 import { ExtractFunction } from "../functions/extract.ts";
 import { ExecuteFunction } from "../functions/execute.ts";
 import { SendFunction } from "../functions/send.ts";

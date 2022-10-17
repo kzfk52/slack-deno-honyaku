@@ -1,8 +1,4 @@
-import {
-  DefineFunction,
-  Schema,
-  SlackFunction,
-} from "https://deno.land/x/deno_slack_sdk@1.1.2/mod.ts";
+import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
 
 export const ExtractFunction = DefineFunction({
   callback_id: "extract",
