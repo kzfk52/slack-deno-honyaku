@@ -1,5 +1,7 @@
 # Honyaku Bot
 
+original reposigory is [https://github.com/YuheiNakasaka/slack-deno-honyaku](https://github.com/YuheiNakasaka/slack-deno-honyaku)
+
 This is a bot to translate texts with DeepL for
 [new Slack Pkatform](https://api.slack.com/future).
 
